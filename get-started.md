@@ -12,13 +12,14 @@ Links:
 - [P5.js downloads](https://p5js.org/download/)
 
 <script>
-function setup() {
-  const cnv = createCanvas(400, 400);
-  cnv.parent('sketch')
-}
+new p5(s => {
+  s.setup = function() {
+    s.createCanvas(400, 400);
+  }
 
-function draw() {
-  background(100, 100, 230);
-  ellipse(100, 150, 100, 120);
-}
+  s.draw = function() {
+    s.background(140, 150, 230);
+    s.ellipse(200, 100, 100, 100);
+  }
+}, document.getElementById('sketch'))
 </script>
