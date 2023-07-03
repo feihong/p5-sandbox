@@ -1,33 +1,36 @@
 const markdownIt = require("markdown-it");
 
-function unescapeHtml(s) {
-	return s
-		.replace(/&amp;/g, "&")
-		.replace(/&lt;/g, "<")
-		.replace(/&gt;/g, ">")
-		.replace(/&quot;/g, "\"");
-}
+function wrapIframe(code) {
+	let width = 100;
+	let height = 100;
+	const match = code.match(/createCanvas\((\d+), (\d+)\)/);
+	if (match != null) {
+		width = match[1];
+		height = match[2];
+	}
 
-function wrapWithP5Constructor(code, sketchId) {
-	return `new p5(s => {\n${code}\n}, document.getElementById("${sketchId}"));`;
+	const html = `<!DOCTYPE html>
+<html>
+<head>
+<script src="/p5.min.js"></script>
+<style>body { padding: 0; margin: 0; overflow: hidden; }</style>
+</head>
+<body>
+<script>${code}</script>
+</body></html>`;
+	return `<iframe width="${width}" height="${height}" srcdoc="${html.replace(/"/g, '&quot;')}"></iframe>`
 }
 
 function updateFenceRenderer(md) {
 	const origRenderer = md.renderer.rules.fence;
 
-	const newRenderer = function(tokens, idx, options, env, self) {
+	md.renderer.rules.fence = function(tokens, idx, options, env, self) {
 		const html = origRenderer(tokens, idx, options, env, self);
-		// Get rid of markup at front end end, unescape HTML entities
-		let code = unescapeHtml(html.substring(11, html.length - 14));
-		const sketchId = `sketch-${newRenderer.count}`
-    code = wrapWithP5Constructor(code, sketchId);
-		newRenderer.count += 1;
-		const script = `<div id="${sketchId}"></div>\n<script>\n${code}\n</script>\n`;
-		return script + html;
+		// Get rid of markup at front and end
+		const code = html.substring(11, html.length - 14);
+		const iframe = wrapIframe(code);
+		return iframe + '\n' + html;
 	};
-	newRenderer.count = 1;
-
-	md.renderer.rules.fence = newRenderer;
 }
 
 module.exports = function(eleventyConfig) {

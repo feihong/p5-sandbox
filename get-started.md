@@ -6,14 +6,14 @@ title: Get Started
 Source: https://p5js.org/get-started/
 
 ```
-s.setup = function() {
-  s.createCanvas(400, 400);
-};
+function setup() {
+  createCanvas(400, 200);
+}
 
-s.draw = function() {
-  s.background(140, 150, 230);
-  s.ellipse(200, 100, 100, 100);
-};
+function draw() {
+  background(140, 150, 230);
+  ellipse(200, 100, 100, 100);
+}
 ```
 
 Links:
