@@ -17,17 +17,6 @@ title: P5.js sketch
   {{ content | safe }}
 </main>
 <script>
-(function() {
-  const codeDiv = document.getElementById('code')
-  if (codeDiv != null) {
-    const code = document.querySelector('main script').innerText.trim()
-    const preEl = document.createElement('pre')
-    const codeEl = document.createElement('code')
-    codeDiv.appendChild(preEl)
-    preEl.appendChild(codeEl)
-    codeEl.innerText = code
-  }
-})()
 </script>
 </body>
 </html>
