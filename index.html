@@ -1,8 +1,35 @@
-<!doctype html>
-<head>
-<title>P5 Sketches</title>
-</head>
-<body>
-<p>TBD</p>
-</body>
-</html>
+---
+layout: sketch.njk
+title: P5.js Sandbox
+---
+
+<p>Welcome to p5.js sandbox!</p>
+
+<p5-sketch title="Draw a circle">
+  function setup() {
+    createCanvas(400, 200);
+  }
+
+  function draw() {
+    background(140, 150, 230);
+    ellipse(200, 100, 100, 100);
+  }
+</p5-sketch>
+
+<p5-sketch title="A circle in motion">
+  let x = 0
+
+  function setup() {
+    createCanvas(400, 200)
+  }
+
+  function draw() {
+    background(200, 250, 230)
+    ellipse(x, 100, 50, 50)
+    if (x > 450) {
+      x = 0
+    } else {
+      x += 2
+    }
+  }
+</p5-sketch>
