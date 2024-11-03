@@ -1,11 +1,14 @@
 help:
 	just --list
 
-serve:
-	npx @11ty/eleventy --serve
+dev:
+	bun --watch src/index.ts
 
 build:
-	npx @11ty/eleventy
+	bun build src/index.ts --target bun --outdir ./dist
+
+start:
+	NODE_ENV=production bun dist/index.js
 
 install:
-	npm install
+	bun install

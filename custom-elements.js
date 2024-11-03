@@ -11,21 +11,15 @@ class P5Sketch extends HTMLElement {
   constructor() {
     super()
     this.attachShadow({mode: 'open'})
-    this.onMutation = this.onMutation.bind(this)
   }
 
-  connectedCallback() {
-    this.observer = new MutationObserver(this.onMutation);
-    this.observer.observe(this, {childList: true})
-
+  async connectedCallback() {
     this.title = this.getAttribute('title')
-  }
+    const src = this.getAttribute('src')
 
-  onMutation(_mutations) {
-    this.observer.disconnect();
-    if (this.firstChild.nodeType === Node.TEXT_NODE) {
-      this.init(this.firstChild.nodeValue)
-    }
+    const response = await fetch(src)
+    const code = await response.text()
+    this.init(code)
   }
 
   init(code) {
@@ -44,7 +38,7 @@ class P5Sketch extends HTMLElement {
       <style>body { padding: 0; margin: 0; overflow: hidden; }</style>
       </head>
       <body>
-      <script>${code}</script>
+      <script type="module">${code}</script>
       </body>
       </html>`
 
