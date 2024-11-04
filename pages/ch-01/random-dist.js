@@ -1,0 +1,25 @@
+// An array to keep track of how often random numbers are picked
+let randomCounts = [];
+// The total number of counts
+let total = 20;
+
+window.setup = function () {
+  createCanvas(width, height);
+  for (let i = 0; i < total; i++) {
+    randomCounts[i] = 0;
+  }
+}
+
+window.draw = function() {
+  background(255);
+  //{!2} Pick a random number and increase the count.
+  let index = floor(random(randomCounts.length));
+  randomCounts[index]++;
+  stroke(0);
+  fill(127);
+  let w = width / randomCounts.length;
+  // Graph the results.
+  for (let x = 0; x < randomCounts.length; x++) {
+    rect(x * w, height - randomCounts[x], w - 1, randomCounts[x]);
+  }
+}
