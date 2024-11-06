@@ -1,26 +1,27 @@
-Chapter 0: Randomness
+# Chapter 0: Randomness
 
-<p><a href="https://natureofcode.com/random/">Source</a></p>
+Source: https://natureofcode.com/random/
 
 <p5-sketch title="Example 0.1: A traditional random walk" width="640" height="240" src="walker.js"></p5-sketch>
 
 <p5-sketch title="Example 0.2: A random number distribution" width="640" height="240" src="random-dist.js"></p5-sketch>
 
-<p>
-<b>Exercise 0.1</b>
-Create a random walker that has a greater tendency to move down and to the right.
-</p>
+## Exercise 0.1
 
-<p>
-<b>Exercise 0.2</b>
-What is the probability of drawing two aces in a row from a deck of 52 cards, if you reshuffle your first draw back into the deck before making your second draw? What would that probability be if you didn’t reshuffle after your first draw?
-</p>
+Create a random walker that has a greater tendency to move down and to the right.
 
 <p5-sketch title="Example 0.3: A walker that tends to move down and to the right" width="640" height="240" src="walker-se.js"></p5-sketch>
 
-<p>
-  <b>Exercise 0.3</b>
-  Create a random walker with dynamic probabilities. For example, can you give it a 50 percent chance of moving in the direction of the mouse? Remember, you can use mouseX and mouseY to get the current mouse position in p5.js!
-</p>
+
+## Exercise 0.2
+
+What is the probability of drawing two aces in a row from a deck of 52 cards, if you reshuffle your first draw back into the deck before making your second draw? What would that probability be if you didn’t reshuffle after your first draw?
+
+
+## Exercise 0.3
+
+Create a random walker with dynamic probabilities. For example, can you give it a 50 percent chance of moving in the direction of the mouse? Remember, you can use mouseX and mouseY to get the current mouse position in p5.js!
+
+
 
 <p5-sketch title="Example 0.4: A Gaussian distribution" width="640" height="240" src="gaussian-dist.js"></p5-sketch>

@@ -6,9 +6,11 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "elysia": "^1.1.24"
+    "elysia": "^1.1.24",
+    "markdown-it": "^14.1.0"
   },
   "devDependencies": {
-    "@types/bun": "^1.1.13"
+    "@types/bun": "^1.1.13",
+    "@types/markdown-it": "^14.1.2"
   }
 }

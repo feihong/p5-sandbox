@@ -1,4 +1,9 @@
 import { Elysia } from 'elysia'
+import markdownit from 'markdown-it'
+const md = markdownit({
+  linkify: true,
+  html: true,
+})
 
 async function serveFile(path: string) {
   const file = Bun.file(`pages/${path}`)
@@ -6,15 +11,15 @@ async function serveFile(path: string) {
     return file
   }
 
-  const indexFile = Bun.file(`pages/${path}/index.html`)
+  const indexFile = Bun.file(`pages/${path}/index.md`)
   if (await indexFile.exists()) {
     const text = await indexFile.text()
     const index = text.indexOf('\n')
     if (index === -1) {
       return 'Invalid page'
     } else {
-      const title = text.slice(0, index)
-      const body = text.slice(index+1)
+      const title = text.slice(1, index).trim()
+      const body = md.render(text.slice(index + 1))
       return servePage(title, body)
     }
   }
@@ -32,10 +37,8 @@ function servePage(title: string, body: string) {
   <script src="/custom-elements.js"></script>
 </head>
 <body>
-  <main>
-    <h1>${title}</h1>
-    ${body}
-  </main>
+  <h1>${title}</h1>
+  ${body}
 </body>
 </html>`, { headers: { "Content-Type": "text/html" } })
 }

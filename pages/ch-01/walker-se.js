@@ -12,18 +12,16 @@ class Walker {
   }
 
   step() {
-    let choice = floor(random(6));
-    switch (choice) {
-      case 0:
-      case 1:
-        this.x++
-      case 2:
-      case 3:
-        this.y++
-      case 4:
-        this.x--
-      case 5:
-        this.y--
+    // 27% chance of going right or down, 23% change of going left or up
+    let choice = random(100);
+    if (choice < 27) {
+      this.x++;
+    } else if (choice < 54) {
+      this.y++;
+    } else if (choice < 77) {
+      this.x--;
+    } else {
+      this.y--;
     }
 
     this.x = constrain(this.x, 0, width - 1);
@@ -33,15 +31,12 @@ class Walker {
 
 const walker =  new Walker();
 
-//{!1} Remember how p5.js works? setup() is executed once when the sketch starts.
 function setup() {
   createCanvas(width, height);
   background(245);
 }
 
-//{!1} Then draw() loops forever and ever (until you quit).
 function draw() {
-  // Call functions on the walker.
   walker.step();
   walker.show();
 }

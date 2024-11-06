@@ -14,13 +14,12 @@ class Walker {
   }
 
   step() {
-    //{!1} 0, 1, 2, or 3. The random choice determines the step.
-    let choice = floor(random(4));
-    if (choice === 0) {
+    let choice = random(100);
+    if (choice < 25) {
       this.x++;
-    } else if (choice === 1) {
+    } else if (choice < 50) {
       this.x--;
-    } else if (choice === 2) {
+    } else if (choice < 75) {
       this.y++;
     } else {
       this.y--;
