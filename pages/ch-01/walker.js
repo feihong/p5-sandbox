@@ -1,3 +1,5 @@
+const [width, height] = getDimensions()
+
 class Walker {
   constructor() {
     // Objects have data.
@@ -29,7 +31,7 @@ class Walker {
 const walker =  new Walker();
 
 //{!1} Remember how p5.js works? setup() is executed once when the sketch starts.
-window.setup = function() {
+function setup() {
   createCanvas(width, height);
   background(245);
 }

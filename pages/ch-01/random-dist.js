@@ -1,16 +1,18 @@
+const [width, height] = getDimensions()
+
 // An array to keep track of how often random numbers are picked
 let randomCounts = [];
 // The total number of counts
 let total = 20;
 
-window.setup = function () {
+function setup() {
   createCanvas(width, height);
   for (let i = 0; i < total; i++) {
     randomCounts[i] = 0;
   }
 }
 
-window.draw = function() {
+function draw() {
   background(255);
   //{!2} Pick a random number and increase the count.
   let index = floor(random(randomCounts.length));

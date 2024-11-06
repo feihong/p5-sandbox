@@ -12,4 +12,6 @@ Start server at http://localhost:8080
 
 ## TODO
 
+- Use markdown instead of html
+- Add reset button next to sketches
 - Add button to show source code of sketch

@@ -15,37 +15,15 @@ class P5Sketch extends HTMLElement {
 
   async connectedCallback() {
     const title = this.getAttribute('title')
-    const width = this.getAttribute('width') ?? '100'
-    const height = this.getAttribute('height') ?? '100'
-    const src = location.pathname + '/' + this.getAttribute('src')
-
-    const response = await fetch(src)
-    const code = await response.text()
-    this.init(title, code, width, height)
-  }
-
-  init(title, code, width, height) {
-    const html = `<!DOCTYPE html>
-      <html>
-      <head>
-      <script src="/p5.min.js"></script>
-      <style>body { padding: 0; margin: 0; overflow: hidden; }</style>
-      </head>
-      <body>
-      <script>
-      const width = ${width};
-      const height = ${height};
-
-      ${code}
-      </script>
-      </body>
-      </html>`
+    const width = this.getAttribute('width') ?? '640'
+    const height = this.getAttribute('height') ?? '240'
+    const src = '/canvas' + location.pathname + '/' + this.getAttribute('src')
 
     this.shadowRoot.innerHTML = `
     ${P5Sketch.style}
     <div>
       <div class="title">${title}</div>
-      <iframe width="${width}" height="${height}" srcdoc="${html.replace(/"/g, '&quot;')}"></iframe>
+      <iframe width="${width}" height="${height}" src="${src}"></iframe>
     </div>`
   }
 }

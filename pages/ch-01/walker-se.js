@@ -1,3 +1,5 @@
+const [width, height] = getDimensions()
+
 class Walker {
   constructor() {
     this.x = width / 2;
@@ -32,13 +34,13 @@ class Walker {
 const walker =  new Walker();
 
 //{!1} Remember how p5.js works? setup() is executed once when the sketch starts.
-window.setup = function() {
+function setup() {
   createCanvas(width, height);
   background(245);
 }
 
 //{!1} Then draw() loops forever and ever (until you quit).
-window.draw = function() {
+function draw() {
   // Call functions on the walker.
   walker.step();
   walker.show();

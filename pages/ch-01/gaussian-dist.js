@@ -1,9 +1,11 @@
-window.setup = function() {
-  createCanvas(640, 240);
+const [width, height] = getDimensions()
+
+function setup() {
+  createCanvas(width, height);
   background(255);
 }
 
-window.draw = function() {
+function draw() {
   //{!1} A normal distribution with mean 320 and standard deviation 60
   let x = randomGaussian(320, 60);
   noStroke();
