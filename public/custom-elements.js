@@ -1,13 +1,4 @@
 class P5Sketch extends HTMLElement {
-  static style = `
-  <style>
-    .title {
-      font-weight: 600;
-      font-size: 1.1em;
-    }
-  </style>
-  `
-
   constructor() {
     super()
     this.attachShadow({mode: 'open'})
@@ -20,9 +11,8 @@ class P5Sketch extends HTMLElement {
     const src = '/canvas' + location.pathname + '/' + this.getAttribute('src')
 
     this.shadowRoot.innerHTML = `
-    ${P5Sketch.style}
     <div>
-      <div class="title">${title}</div>
+      <h3>${title}</h3>
       <iframe width="${width}" height="${height}" src="${src}"></iframe>
     </div>`
   }

@@ -1,9 +1,11 @@
 import { Elysia } from 'elysia'
 import markdownit from 'markdown-it'
+import tm from 'markdown-it-texmath'
+
 const md = markdownit({
   linkify: true,
   html: true,
-})
+}).use(tm)
 
 async function serveFile(path: string) {
   const file = Bun.file(`pages/${path}`)
@@ -33,7 +35,8 @@ function servePage(title: string, body: string) {
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${title}</title>
-  <link rel="stylesheet" href="/main.css">
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css">
+  <link rel="stylesheet" href="/styles.css">
   <script src="/custom-elements.js"></script>
 </head>
 <body>
@@ -70,8 +73,9 @@ function serveCanvas(path: string) {
 
 
 new Elysia()
+  .get('/simple.min.css', () => Bun.file('public/simple.min.css'))
   .get('/custom-elements.js', () => Bun.file('public/custom-elements.js'))
-  .get('/main.css', () => Bun.file('public/main.css'))
+  .get('/styles.css', () => Bun.file('public/styles.css'))
   .get('/p5.min.js', () => Bun.file('public/p5.min.js'))
   .get('/canvas/*', ({ params }) => serveCanvas('/' + params['*']))
   .get('/*', ({ params }) => serveFile(params['*']))
