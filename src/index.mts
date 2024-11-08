@@ -57,12 +57,9 @@ function serveCanvas(path: string) {
   <script src="/p5.min.js"></script>
   <script>
   // Get width and height from query string params
-  function getDimensions() {
-    const params = new URLSearchParams(location.search)
-    const w = params.get('w') || '640'
-    const h = params.get('h') || '240'
-    return [parseInt(w), parseInt(h)]
-  }
+  const _params = new URLSearchParams(location.search)
+  const width = _params.get('w') || '640'
+  const height = _params.get('h') || '240'
   </script>
   <script src="${path}"></script>
 </head>

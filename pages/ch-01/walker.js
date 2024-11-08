@@ -1,5 +1,3 @@
-const [width, height] = getDimensions()
-
 class Walker {
   constructor() {
     // Objects have data.

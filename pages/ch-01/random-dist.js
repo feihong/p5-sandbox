@@ -1,5 +1,3 @@
-const [width, height] = getDimensions()
-
 // An array to keep track of how often random numbers are picked
 let randomCounts = [];
 // The total number of counts

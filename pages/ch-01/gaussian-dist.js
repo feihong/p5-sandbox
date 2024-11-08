@@ -1,5 +1,3 @@
-const [width, height] = getDimensions()
-
 function setup() {
   createCanvas(width, height);
   background(255);
